@@ -1,14 +1,22 @@
 import { useState } from 'react'
 import styles from './CarForm.module.css'
 
+const clearData = {
+    name: '',
+    price: '',
+    image: ''
+}
+
 const CarForm = ({setCars}) => {
-    const [name, setName] = useState('')
-    const [price, setPrice] = useState('')
-    const [image, setImage] = useState('')
+    const [data, setData] = useState(clearData)
 
     const addNewCar = (e) => {
         e.preventDefault()
-        setCars(prev=> [{id: prev.length+1, name, price, image}, ...prev ])
+        setCars(prev=> [
+            {...data, id: prev.length+1}, 
+            ...prev 
+        ])
+        setData(clearData)
     }
 
     return (
@@ -16,18 +24,24 @@ const CarForm = ({setCars}) => {
             <form className={styles.form}>
                 <input 
                     placeholder="Name"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
+                    value={data.name}
+                    onChange={e => setData( prev => (
+                        {...prev, name: e.target.value}
+                    ))}
                 />
                 <input 
                     placeholder="Price" 
-                    value={price}
-                    onChange={e=>setPrice(e.target.value)}
+                    value={data.price}
+                    onChange={e => setData( prev => (
+                        {...prev, price: e.target.value}
+                    ))}
                 />
                 <input 
                     placeholder="Image" 
-                    value={image}
-                    onChange={e=>setImage(e.target.value)}
+                    value={data.image}
+                    onChange={e => setData( prev => (
+                        {...prev, image: e.target.value}
+                    ))}
                 />
                 <button
                     className='btn'
