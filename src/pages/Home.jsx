@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import CarForm from '../components/car-form/CarForm'
 import { CarItem } from '../components/car-item/CarItem'
 import { cars as carsData } from './cars.data'
@@ -6,6 +6,10 @@ import { cars as carsData } from './cars.data'
 const Home = () => {
 
     const [cars, setCars] = useState(carsData)
+
+    useEffect(()=>{
+        console.log('Hey')
+    }, [cars])
 
     return (
         <>
