@@ -2,19 +2,29 @@ import { useEffect, useState } from 'react'
 import CarForm from '../components/car-form/CarForm'
 import { CarItem } from '../components/car-item/CarItem'
 import { cars as carsData } from './cars.data'
+import { CarService } from '../services/car.service'
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
 
-    const [cars, setCars] = useState(carsData)
+    const [cars, setCars] = useState([])
 
     useEffect(()=>{
-        console.log('Hey')
-    }, [cars])
+        const fetchData = async () => {
+            const data = await CarService.getAll()
+            setCars(data)
+        }
+        fetchData()
+    }, [])
 
+    /* useNavigate */
+    // const nav = useNavigate() 
+    
     return (
         <>
           <div>
-            <h1>Cars Catalog</h1>  
+            <h1>Cars Catalog</h1>
+            {/* <button onClick={()=>nav('car/2')} >go</button>   */}
             <CarForm setCars={setCars}/>
             { cars.length ? cars.map(item=> {
                 return (

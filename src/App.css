@@ -1,10 +1,16 @@
 .btn{
-    display: block;
-    padding: 6px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 20px;
     border-radius: 5px;
     cursor: pointer;
     border: none;
     outline: none;
+    text-decoration: none;
+    color: #111;
+    background-color: #fff;
+    max-width: 100px;
     transition: all 0.3s ease;
 }
 .btn:hover{

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styles from '../../pages/Home.module.css'
 
 export const CarItem = ({car: item}) => (
@@ -25,7 +26,7 @@ export const CarItem = ({car: item}) => (
                 style: 'currency',
                 currency: 'USD'
             }).format(item.price)}</p>
-            <button>Read more</button>
+            <Link className='btn' to={`/car/${item.id}`}>Read more</Link>
         </div>
     </div>
 )
