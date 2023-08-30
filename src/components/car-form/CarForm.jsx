@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import styles from './CarForm.module.css'
 
 const clearData = {
@@ -19,10 +19,18 @@ const CarForm = ({setCars}) => {
         setData(clearData)
     }
 
+    // const inputElement = useRef()
+
+    // const focusInput = (e) => {
+    //     e.preventDefault()
+    //     inputElement.current.focus()
+    // }
+
     return (
         <>
             <form className={styles.form}>
                 <input 
+                    // ref={inputElement}
                     placeholder="Name"
                     value={data.name}
                     onChange={e => setData( prev => (
@@ -47,6 +55,7 @@ const CarForm = ({setCars}) => {
                     className='btn'
                     onClick={e=>addNewCar(e)} 
                 >Add Car</button>
+                {/* <button onClick={(e)=>focusInput(e)}>Focus Input</button> */}
             </form>
         </>
     )
