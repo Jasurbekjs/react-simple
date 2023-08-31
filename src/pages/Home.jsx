@@ -9,9 +9,9 @@ const Home = () => {
 
     const [cars, setCars] = useState([])
 
-    const clearCars = useCallback(()=> ()=>{
-        setCars([])
-    }, [cars]) 
+    // const clearCars = useCallback(()=> ()=>{
+    //     setCars([])
+    // }, [cars]) 
 
     useEffect(()=>{
         const fetchData = async () => {
@@ -20,7 +20,7 @@ const Home = () => {
         }
         fetchData()
 
-        return clearCars
+        // return clearCars
     }, [])
 
     /* useNavigate */
