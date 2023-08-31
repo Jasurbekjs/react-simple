@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import CarForm from '../components/car-form/CarForm'
 import { CarItem } from '../components/car-item/CarItem'
 import { cars as carsData } from './cars.data'
@@ -9,12 +9,18 @@ const Home = () => {
 
     const [cars, setCars] = useState([])
 
+    const clearCars = useCallback(()=> ()=>{
+        setCars([])
+    }, [cars]) 
+
     useEffect(()=>{
         const fetchData = async () => {
             const data = await CarService.getAll()
             setCars(data)
         }
         fetchData()
+
+        return clearCars
     }, [])
 
     /* useNavigate */
